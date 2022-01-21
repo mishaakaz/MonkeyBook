@@ -229,7 +229,7 @@ class messages(ListView):
 def send_message(request, username):
     cur = User.objects.get(username = username)
     dialog = Dialog.objects.filter(Q(member1=request.user) | Q(member2 = request.user)).filter(Q(member1=cur) | Q(member2 = cur))
-    form = TextMessage(request.POST or None, request.FILES or None, initial={'chat': dialog[0], 'author': cur})
+    form = TextMessage(request.POST or None, request.FILES or None, initial={'chat': dialog[0], 'author': request.user})
 
     if form.is_valid():
         form.save()
