@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/settings_style.css' %}">
+
+  <div class="settings-page">
+    {% include 'settings_page_template.html' %}
+
+    <div class="change-pass">
+        <form method="post">{% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" value="Подтвердить">
+        </form>
+     </div>
+  </div>
+  
+{% endblock %}

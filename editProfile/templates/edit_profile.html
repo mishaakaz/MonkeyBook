@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/settings_style.css' %}">
+
+  <div class="settings-page">
+    {% include 'settings_page_template.html' %}
+
+    <div class="edit-profile">
+        <form method="POST" enctype="multipart/form-data" action="/edit/profile/">
+          {% csrf_token %}
+          {% for field in form%}
+            <label for="{{field.id}}">{{field.help_text}}</label>
+            {{ field }}
+          {% endfor %}
+
+          <input type="submit" value="Сохранить изменения">
+        </form>
+     </div>
+  </div>
+  
+{% endblock %}

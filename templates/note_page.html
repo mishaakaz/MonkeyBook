@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="all-notes">
+    {% include 'note_template.html' %}
+  </div>
+
+  {% load static %}
+  <script src="{% static 'js/banana_rate.js' %}"></script>
+{% endblock %}

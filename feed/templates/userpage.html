@@ -1,0 +1,59 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+{% block content %}
+  <div class="userpage">
+    <div class="userpage-profile">
+      <div class="userpage-avatar">
+        <img src="/media/{{current_user.profile.photo}}" />
+        {% include 'friend_req_button.html' %}
+      </div>
+      
+      <div class="userpage-info">
+        <label class="userpage-nickname" {% if current_user == user and user.is_superuser %} style="color:cadetblue;" {% endif %}>{{current_user.profile.nickname}}</label>
+        {% if current_user == user %}
+          <a href="/edit">Редактировать профиль</a>
+        {% endif %}
+
+        {% if current_user.profile.online %}
+          <label>Онлайн</label>
+        {% else %}
+          {% if current_user.profile.sex %}
+            <label>Был в сети {% if current_user.profile.last_seen %}{{ current_user.profile.last_seen|timesince }}{% else %}более недели{% endif %} назад</label>
+          {% else %}
+            <label>Была в сети {% if current_user.profile.last_seen %}{{ current_user.profile.last_seen|timesince }}{% else %}более недели{% endif %} назад</label>
+          {% endif %}
+          
+        {% endif %}
+  
+        <div class="userpage-stat">
+          <label><b>{{notes.count}}</b> {{notes_declination}}</label>
+          <a href="friends"><b>{{friend_count}}</b> {{friend_declination}}</a>
+          <label><b>{{sub_list_count}}</b> подписчиков</label>
+        </div>
+        <label class="userpage-name">{{current_user.profile.name}} {{current_user.profile.surname}}</label>
+        <label class="userpage-status">{{current_user.profile.status}}</label>
+        <label class="userpage-birth">{{current_user.profile.date_of_birth}}</label>
+      </div>
+    </div>
+  
+    {% if user == current_user %}
+      <div class="posting-case">
+        {% include 'posting_note_template.html' %}
+      </div>
+    {% endif %}
+  
+    <div class="all-notes">
+      {% for note in notes %}
+        {% include 'note_template.html' %}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% load static %}
+  <script src="{% static 'js/banana_rate.js' %}"></script>
+  <script src="{% static 'js/friend_conclusion.js' %}"></script>
+  
+{% endblock %}

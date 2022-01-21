@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dialogs_style.css' %}">
+
+    <div class="dialogs_list">
+        {% for dialog in dialogs %}
+            <div class="dialog_unit">
+                {% if dialog.member1 == user %}
+                    <a href="/{{ dialog.member2 }}/"><img src="/media/{{ dialog.member2.profile.photo }}"/></a>
+                    <a href="/{{ dialog.member2 }}/dialog/">{{ dialog.member2.profile.name }} {{ dialog.member2.profile.surname }}</a>
+                {% else %}
+                    <img src="/media/{{ dialog.member1.profile.photo }}"/>
+                    <a href="/{{ dialog.member1 }}/dialog/">{{ dialog.member1.profile.name }} {{ dialog.member1.profile.surname }}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

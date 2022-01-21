@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JungleBook</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+    </head>
+    <body>
+        <div class="background">
+
+        </div>
+
+        {% if user.is_authenticated %}
+            <div class="authorizeddiv">
+                <div class="content-line">
+                    <label class="text logintext content-line-child">Твоя история уже пишется</label>
+                    <label class="subtext loginsubtext content-line-child">Ты авторизован как <b>{{ user.get_username }}</b></label>
+                    <img class="userimage content-line-child" src="../media/{{user.profile.get_photo}}" alt="https://facecat.ams3.digitaloceanspaces.com/ask/photos/1evnl7meoed2b213e725bd91e382d040a7faec9cf"/>
+                    <a href="/{{user}}" class="button loginbutton content-line-child">Продолжить</a>
+                    <a href="{% url 'logout'%}?next={{request.path}}" class="button loginbutton content-line-child">Выйти</a>
+                </div> 
+            </div>
+        {% else %}
+            <div class="logindiv">
+                <form id="first" class="content-line" method="post">
+                    {% csrf_token %}
+                    <div class="input-div">
+                        <div><strong>Логин</strong></div>
+                        <div class="user-input">{{ form_log.username }}</div>
+                    </div>
+                    <div class="input-div">
+                      <div><strong>Пароль</strong></div>
+                      <div class="user-input">{{ form_log.password }}</div>
+                    </div>
+                    <div class="button-div"><input type="submit" class="btn btn-success" value="Зарегистрироваться" /></div>
+                </form>
+            </div>
+    
+            <div class="registerdiv">
+                <form id="second" class="content-line" method="post">
+                    {% csrf_token %}
+                    <div class="input-div">
+                        <div><strong>Логин</strong></div>
+                        <div class="user-input">{{ form_reg.username }}</div>
+                    </div>
+                    <div class="input-div">
+                        <div><strong>Email</strong></div>
+                        <div class="user-input">{{ form_reg.email }}</div>
+                    </div>
+                    <div class="input-div">
+                      <div><strong>Пароль</strong></div>
+                      <div class="user-input">{{ form_reg.password1 }}</div>
+                    </div>
+                    <div class="input-div">
+                      <div><strong>Подтверждение пароля</strong></div>
+                      <div class="user-input">{{ form_reg.password2 }}</div>
+                    </div>
+
+                    <div class="button-div"><input type="submit" id="auth-button" class="btn btn-success" value="Зарегистрироваться" /></div>
+                </form>
+            </div>
+
+            <div class="foreground">
+                <div class="content-line">
+                    <label class="text foretext content-line-child"><span id="fore-welcome"></span></label>
+                    <label class="foresubtext content-line-child"><span id="fore-info"></span></label>
+                    <button class="button forebutton content-line-child"><span id="fore-status"></span></button>
+                </div>
+            </div>
+
+            <script>
+                let foreground = document.querySelector(".foreground");
+                let forebutton = document.querySelector(".forebutton");
+                let logindiv = document.querySelector(".logindiv");
+                let registerdiv = document.querySelector(".registerdiv");
+                
+                forebutton.addEventListener("click", ()=>{
+                    foreground.classList.toggle("register");
+                    menuBtnChange();
+                });
+                
+                function menuBtnChange()
+                {
+                    if(foreground.classList.contains("register"))
+                    {
+                        logindiv.classList.replace("logindiv", "logindiv-alt");
+                        registerdiv.classList.replace("registerdiv", "registerdiv-alt");
+                    }
+                    else
+                    {
+                        logindiv.classList.replace("logindiv-alt","logindiv");
+                        registerdiv.classList.replace("registerdiv-alt", "registerdiv");
+                    }
+                }
+            </script>
+        {% endif %}
+    </body>
+</html>

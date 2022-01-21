@@ -1,0 +1,75 @@
+{% load poll_extras %}
+
+<div class="single-note" style="background-color: #{{note.get_color.0}};">
+
+    <div class="grade-color">
+
+        <div class="author">
+          <div>
+            <a href="/{{note.author}}"><img src="/media/{{note.author.profile.photo}}"></a>
+            <div class="sub">
+                <label id="author-sub-name"><a href="/{{note.author}}">{{ note.author.profile.name }} {{ note.author.profile.surname }}</a></label>
+                <label id="author-sub-time"><a href="/note/{{note.id}}">{{ note.created }}</a></label>
+            </div>
+          </div>
+
+          {% if note.author == user or user.is_superuser %}
+            <input type="button" id="delete_post_{{note.id}}" name="delete-post" class="{{note.id}}"/>
+            <label for="delete_post_{{note.id}}" class="button">
+              <svg class="icon">
+                <use xlink:href="#icon-photo-delete" href="#icon-photo-delete"/>
+              </svg>
+            </label>
+          {% endif %}
+        </div>
+
+        <div class="content">
+          <label> {{ note.text }}</label>
+          <img src="../../media/{{note.note_image}}">
+        </div>
+
+        <div class="statistics">
+          <div class="like-button button" id="id-like-button">
+              <svg class="icon">
+              <use xlink:href="#icon-banana" href="#icon-banana"/>
+              </svg>
+              <label>{{ note.likes.count }}</label>
+
+              <form for="id-like-button" class="select-banana" action="#" method="get">
+                {% for i in '.....'|make_list %}
+                  {% if note.likes|on_user:user == forloop.counter %}
+                    <input type="radio" id="star{{ forloop.counter }}_{{note.id}}" name="unrate" class="{{note.id}}"/>
+                    <label for="star{{ forloop.counter }}_{{note.id}}">
+                      <svg class="icon" id="id-banana-{{ forloop.counter }}-unrate">
+                        <use xlink:href="#icon-banana" href="#icon-banana"/>
+                      </svg>
+                    </label>
+                  {% else %}
+                    <input type="radio" id="star{{ forloop.counter }}_{{note.id}}" name="rate" value="{{ forloop.counter }}" class="{{note.id}}"/>
+                    <label for="star{{ forloop.counter }}_{{note.id}}">
+                      <svg class="icon" id="id-banana-{{ forloop.counter }}-rate">
+                        <use xlink:href="#icon-banana" href="#icon-banana"/>
+                      </svg>
+                    </label>
+                  {% endif %}
+                {% endfor %}
+              </form>
+          </div>
+
+          <div class="rating" style="background-color: #{{note.get_color.0}};">
+              <svg class="icon" style="fill: #{{note.get_color.1}};">
+              <use xlink:href="#icon-rate" href="#icon-rate"/>
+              </svg>
+              <label style="color: #{{note.get_color.1}};">{{ note.get_middle_vote }}</label>
+          </div>
+
+          <input type="button" id="repost-button_{{note.id}}" name="repost-button" value="{{note.id}}"/>
+          <label class="repost-button button" for="repost-button_{{note.id}}">
+            <svg class="icon">
+              <use xlink:href="#icon-repost" href="#icon-repost"/>
+            </svg>
+          </label>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,82 @@
+<div class="note">
+  <form enctype="multipart/form-data" method="POST" action="" id="uploadImages">
+    {% csrf_token %}
+    {% for field in form %}
+      {{ field }}
+    {% endfor %}
+
+    <input type="submit" value="Опубликовать" class="inputfile" id="id_posting"/>
+    <div class = "buttons">
+
+      <div>
+        <label for="id_note_image">
+          <svg class="icon" >
+            <use xlink:href="#icon-photo" href="#icon-photo" />
+          </svg>
+        </label>
+        <div class="preview_note_image">
+          <img id="preview_note_image" src=""/>
+          <svg class="icon" id='note_image_delete'>
+            <use xlink:href="#icon-photo-delete" href="#icon-photo-delete" />
+          </svg>
+        </div>
+      </div>
+      
+      <div id="id_posting_label" >
+        <label for="id_posting">Опубликовать</label>
+      </div>
+    </div>
+  </form>
+</div>
+
+<svg style="display: none">
+  <symbol id="icon-photo" viewBox="0 0 128 128">
+      <path d="M81.8,41.63l-4.61-5.27C76.44,35.5,75.34,35,74.18,35H64H53.82c-1.15,0-2.25,0.5-3.01,1.37
+      l-4.61,5.27C45.44,42.5,44.34,43,43.18,43H36c-2.21,0-4,1.79-4,4v42c0,2.21,1.79,4,4,4h28h28c2.21,0,4-1.79,4-4V47
+      c0-2.21-1.79-4-4-4h-7.18C83.66,43,82.56,42.5,81.8,41.63z M64,83c-8.56,0-15.5-6.94-15.5-15.5S55.44,52,64,52s15.5,6.94,15.5,15.5
+      S72.56,83,64,83z"/>
+  </symbol>
+</svg>
+
+<svg style="display: none">
+  <symbol id="icon-photo-delete" viewBox="0 0 128 128">
+      <path d="M96.28,80.35L79.93,64l16.35-16.35c1.85-1.85,1.85-4.86,0-6.71l-9.22-9.22c-1.85-1.85-4.86-1.85-6.71,0
+      L64,48.07L47.65,31.72c-1.85-1.85-4.86-1.85-6.71,0l-9.22,9.22c-1.85,1.85-1.85,4.86,0,6.71L48.07,64L31.72,80.35
+      c-1.85,1.85-1.85,4.86,0,6.71l9.22,9.22c1.85,1.85,4.86,1.85,6.71,0L64,79.93l16.35,16.35c1.85,1.85,4.86,1.85,6.71,0l9.22-9.22
+      C98.13,85.2,98.13,82.2,96.28,80.35z"/>
+  </symbol>
+</svg>
+
+<script>
+  function readURL(input)
+  {
+    if (input.files && input.files[0])
+    {
+      var reader = new FileReader();
+      
+      reader.onload = function (e)
+      {
+        $('#preview_note_image').attr('src', e.target.result);
+        $('#preview_note_image').width(40);
+        $('#note_image_delete').attr('opacity', 1);
+      }
+      
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+    
+  $("#id_note_image").change(function()
+  {
+    readURL(this);
+  });
+ </script>
+
+<script>
+  $( "#note_image_delete" ).click(function() {
+    document.getElementById("id_note_image").value = "";
+
+    $('#preview_note_image').attr('src', "");
+    $('#preview_note_image').width(0);
+    $('#note_image_delete').attr('opacity', 0);
+  });
+ </script>

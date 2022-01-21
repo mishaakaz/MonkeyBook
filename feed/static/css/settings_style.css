@@ -1,0 +1,53 @@
+.settings-page{
+    font-size: 16pt;
+}
+
+.settings-page{
+    width: 100%;
+    height: 100%;
+
+    display: -webkit-flex; 
+    display: flex;
+    flex-direction: row;
+
+    padding: 25px;
+}
+
+.settings-page > .side-menu, .settings-page > .edit-profile > form{
+    display: -webkit-flex; 
+    display: flex;
+    flex-direction: column;
+
+    width: auto;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.settings-page > .side-menu{
+    margin-right: 25px;
+}
+
+.settings-page > .edit-profile > form{
+    padding: 10px;
+}
+
+.settings-page > .side-menu > *{
+    display: inline;
+
+    width: auto;
+    height: auto;
+
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 10px;
+
+    background-color: white;
+
+    text-decoration: none;
+    color: black;
+}
+
+.settings-page > .side-menu > *:hover{
+    background-color: #ccc;
+}

@@ -1,0 +1,20 @@
+input.friend_button{
+    display: none;
+}
+
+label.friend_button{
+    width: 200px;
+    height: auto;
+
+    cursor: pointer;
+
+    padding: 10px;
+    border-radius: 15px;
+
+    background-color: white;
+    text-align: center;
+}
+
+label.friend_button:hover{
+    background-color: silver;
+}

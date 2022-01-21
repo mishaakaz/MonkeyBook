@@ -1,0 +1,161 @@
+/* Google Font Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+}
+section.HeadMenu
+{
+	background-color:  #102d2c;
+	width: 100%;
+	height: 50px;
+	z-index: 100;
+	margin: 0;
+	padding: 0;
+	position: fixed;
+	font-weight: 700;
+}
+
+section.HeadMenu > div
+{
+    height: 100%;
+	width: 100%;
+    padding: 0 30px;
+	display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section.HeadMenu > div > *{
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+}
+
+section.HeadMenu > div > *:hover{
+	color: chocolate;
+}
+
+a, a:visited
+{
+	text-decoration: none;
+}
+
+section.Jungle
+{
+	position: relative;
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+section.Jungle > img
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+}
+
+section.Jungle::before
+{
+	content: '';
+	position: absolute;
+	bottom :0;
+	width: 100%;
+	height: 150px;
+	background: linear-gradient(to top, #0a1928, transparent);
+	z-index: 10;
+}
+
+section.Partition
+{
+    width: 100%;
+    height: 150px;
+    background-color: #0a1928;
+}
+
+section.AboutMe::before
+{
+	content: '';
+	position: absolute;
+	top :0;
+	width: 100%;
+	height: 150px;
+	background: linear-gradient(to bottom, #0a1928, transparent);
+	z-index: 10;
+} 
+
+section.AboutMe
+{
+	position: relative;
+	width: 100%;
+	height: 50vh;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #1e3c5a;
+}
+
+section.Columns
+{
+	height: 60vh;
+	width: 100%;
+	background-color: #0a6e50;
+} 
+
+section.AboutMe > div > img
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	pointer-events: none;
+}
+
+body
+{
+    margin: 0;
+}
+
+section.AboutMe > div > p
+{
+    margin: 0;
+    font-size: 48pt;
+    text-align: center;
+    padding-top: 100px;
+	font-weight: 500;
+}
+
+.Columns > div{
+	display: inline-flex;
+	flex-direction: column;
+
+	width: 100%;
+	height: auto;
+
+	align-items: center;
+	align-content: center;
+	text-align: center;
+
+	padding-top: 100px;
+}
+
+.Columns > div *{
+	margin-left: auto;
+	margin-right: auto;
+
+	color: white;
+	font-size: 32pt;
+}

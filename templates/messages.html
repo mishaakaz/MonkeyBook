@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/messages_style.css' %}">
+
+  <div class="messages">
+    <div class="list">
+      {% for message in messages %}
+        <div class="message_unit {% if message.author == user %}sended{% else %}received{% endif %}">
+          <div class="author_info">
+            <a href="/{{ message.author }}/"><img src="/media/{{ message.author.profile.photo }}"/></a>
+            <a href="/{{ message.author }}/">{{ message.author.profile.name }}</a>
+          </div>
+
+          <label class="text_message">
+            {{ message.message }}
+          </label>
+
+          <label class="message_date">{{ message.pub_date }}</label>
+        </div>
+
+      {% endfor %}
+    </div>
+      
+  </div>
+
+  <div class="formhelp">
+    <form enctype="multipart/form-data" method="POST" id="send-message" action="/{{current_user}}/dialog/send_message/">
+      {% csrf_token %}
+      {% for field in form %}
+        {{ field }}
+      {% endfor %}
+      <input type="submit" id="id_sending" name="send"/>
+      <label for="id_sending">Отправить</label>
+    </form>
+  </div>
+
+  
+{% endblock %}

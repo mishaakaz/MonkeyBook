@@ -1,0 +1,132 @@
+.messages{
+    width: 100%;
+    height: auto;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    padding-top: 25px;
+
+    align-content: center;
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+.list{
+    width: 80%;
+    height: auto;
+}
+
+.message_unit{
+    width: auto;
+    max-width: 40%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 10px;
+    border-radius: 15px;
+
+    margin-bottom: 10px;
+}
+
+.author_info{
+    width: auto;
+    height: auto;
+
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 5px;
+}
+
+.author_info img{
+    width: 30px;
+    height: 30px;
+
+    border-radius: 15px;
+
+    margin-right: 10px;
+}
+
+.author_info a{
+    font-size: 12pt;
+
+    width: auto;
+    height: auto;
+
+    text-align: center;
+}
+
+.text_message{
+    font-size: 14pt;
+}
+
+.sended{
+    background-color: powderblue;
+
+    margin-left: 60%;
+}
+
+.received{
+    background-color: white;
+}
+
+.message_date{
+    width: 100%;
+    text-align: right;
+
+    opacity: 50%;
+}
+
+.formhelp{
+    width: 100%;
+    height: auto;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    align-content: center;
+    align-items: center;
+}
+
+form{
+    width: 80%;
+    height: auto;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form textarea{
+    width: 100%;
+    border-radius: 25px;
+
+    margin-bottom: 15px;
+}
+
+form input{
+    display: none;
+}
+
+form label{
+    cursor: pointer;
+
+    width: 200px;
+    height: auto;
+
+    padding: 10px;
+    border-radius: 15px;
+
+    background-color:slategray;
+    text-align: center;
+}
+
+form label:hover{
+    background-color:silver;
+}

@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/friend_button_style.css' %}">
+
+{% if user != current_user %}
+    {% if is_friend %}
+        <input type="button" name = "del_friend" class="friend_button" id="del_friend"/>
+        <label for="del_friend" class="friend_button">Удалить из друзей</label>
+    {% else %}
+        {% if sending_friend_request %}
+            <input type="button" name = "cancel_req" class="friend_button" id="cancel_req"/>
+            <label for="cancel_req" class="friend_button">Отменить заявку</label>
+        {% else %} 
+            {% if applied_friend_request %} 
+            <input type="button" name = "accept_req" class="friend_button" id="accept_req"/>
+            <input type="button" name = "reject_req" class="friend_button" id="reject_req"/>
+
+            <label for="accept_req" class="friend_button">Принять заявку</label>
+            <label for="reject_req" class="friend_button">Отклонить заявку</label>
+            {% else %}
+            <input type="button" name = "send_req" class="friend_button" id="send_req"/>
+            <label for="send_req" class="friend_button">Отправить заявку</label>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <input type="button" name = "send_message" class="friend_button" id="send_message"/>
+    <label for="send_message" class="friend_button">Написать сообщение</label>
+{% endif %}

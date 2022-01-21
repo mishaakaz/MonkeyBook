@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block title %}<title>JungleBook</title>{% endblock %}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Добавление дополнительного статического CSS файла -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+
+        
+    </head>
+
+    <body>
+        <div class="background-pattern">
+            <div></div>
+        </div>
+
+        <div class="main">
+            {% block content %}
+                    
+            {% endblock %}
+        </div>
+        
+        <div class="container-fluid">
+            <div class="row">
+                {% block sidebar %}
+                <div class="sidebar">
+
+                    <div class="logo-details">
+                        <!--<i class='bx bxl-c-plus-plus icon'></i> -->
+                        <a class="logo_name" href="/about">JungleBook</a>
+                        <i class='bx bx-menu' id="btn">
+                            <label for="menu"></label>
+                        </i>
+                    </div>
+
+                    <ul class="nav-list">
+                        <li>
+                            <svg style="display: none">
+                                <symbol id="icon-home" viewBox="0 0 128 128">
+                                    <path d="M67.23,33.85c-1.78-1.29-4.69-1.29-6.47,0L34.23,53.15C32.46,54.44,31,57.3,31,59.5v33c0,2.2,1.8,4,4,4h13
+                                    c2.2,0,4-1.8,4-4v-21c0-2.2,1.8-4,4-4h4c2.2,0,5.8,0,8,0h4c2.2,0,4,1.8,4,4v21c0,2.2,1.8,4,4,4h13c2.2,0,4-1.8,4-4v-33
+                                    c0-2.2-1.46-5.06-3.23-6.35L67.23,33.85z" />
+                                </symbol>
+                            </svg>
+
+                            <a href="/{{user}}">
+                                <i class='bx bx-grid-alt'>
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-home" href="#icon-home" />
+                                    </svg>
+                                </i>
+                                <span class="links_name">Моя страница</span>
+                            </a>
+                            <span class="tooltip">Моя страница</span>
+                        </li>
+
+                        <li>
+                            <svg style="display: none">
+                                <symbol id="icon-book" viewBox="0 0 128 128">
+                                    <path d="M95.72,47.17C83.4,35.38,71.31,43.71,66.3,48.24c-0.83,0.75-1.3,1.83-1.3,2.95v31.69
+                                        c0,2.99,3.15,4.88,5.83,3.55c7.28-3.61,14.84-2.73,19.52-1.53c2.57,0.65,4.8-0.99,4.95-3.64c0.49-8.54,1.44-25.17,1.65-31.05
+                                        C97,49.07,96.55,47.96,95.72,47.17z"/>
+                                    <path d="M32.28,47.18c-0.82,0.79-1.27,1.89-1.23,3.03c0.22,5.88,1.16,22.51,1.65,31.05c0.15,2.67,2.39,4.29,4.97,3.63
+                                        c4.69-1.19,12.23-2.07,19.5,1.54c2.68,1.33,5.83-0.56,5.83-3.55c0-9.84,0-26.37,0-31.7c0-1.12-0.46-2.19-1.3-2.94
+                                        C56.69,43.71,44.6,35.38,32.28,47.18z"/>
+                                </symbol>
+                            </svg>
+
+                            <a href="/">
+                                <i class='bx bx-user'>
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-book" href="#icon-book" />
+                                    </svg>
+                                </i>
+                                <span class="links_name">Лента</span>
+                            </a>
+                            <span class="tooltip">Лента</span>
+                        </li>
+
+                        <li>
+                            <svg style="display: none">
+                                <symbol id="icon-message" viewBox="0 0 128 128">
+                                    <path d="M31,62.5C31,47.86,45.77,36,64,36s33,11.86,33,26.5S82.23,89,64,89
+                                    c-4.96,0-9.85-0.44-13.88-2.45C45,84,41,92,32,92c-3,0,7-11,4.43-14.94C33.47,72.54,31,67.88,31,62.5z"/>
+                                </symbol>
+                            </svg>
+
+                            <a href="/dialog/">
+                                <i class='bx bx-chat' >
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-message" href="#icon-message" />
+                                    </svg>
+                                </i>
+                                <span class="links_name">Сообщения</span>
+                            </a>
+                            <span class="tooltip">Сообщения</span>
+                        </li>
+
+                        <li>
+                            <svg style="display: none">
+                                <symbol id="icon-friends" viewBox="0 0 128 128">
+                                    <circle cx="52.65" cy="47" r="18"/>
+                                    <path d="M52.65,67c-16.1,0-29.43,11.89-31.67,27.37c-0.35,2.43,1.5,4.63,3.96,4.63h55.42
+                                        c2.46,0,4.31-2.19,3.96-4.63C82.08,78.89,68.76,67,52.65,67z"/>
+                                    <circle cx="83.5" cy="60.37" r="13.37"/>
+                                    <path d="M107.02,95.56c-1.67-11.5-11.56-20.33-23.52-20.33c-2.04,0-4.01,0.27-5.9,0.76
+                                        c4.54,4.9,7.69,11.13,8.7,18.1c0.25,1.75-0.26,3.52-1.41,4.85c-0.02,0.02-0.04,0.04-0.06,0.07h19.26
+                                        C105.91,99,107.29,97.37,107.02,95.56z"/>
+                                </symbol>
+                            </svg>
+
+                            <a href="/friends">
+                                <i class='bx bx-pie-chart-alt-2'>
+                                    <svg class="icon">
+                                        <use xlink:href="#icon-friends" href="#icon-friends" />
+                                    </svg>
+                                </i>
+                                <span class="links_name">Друзья</span>
+                            </a>
+                            <span class="tooltip">Друзья</span>
+                        </li>
+
+                        <!-- <li>
+                            <svg style="display: none">
+                                <symbol id="icon-search" viewBox="0 0 128 128">
+                                    <path class="st0" d="M93.78,82.8L81.55,70.56c1.68-3.44,2.62-7.3,2.62-11.38c0-14.36-11.64-26-26-26s-26,11.64-26,26
+                                                    c0,14.36,11.64,26,26,26c5.15,0,9.94-1.5,13.98-4.08l11.67,11.67c2.73,2.73,7.17,2.73,9.9,0l0.07-0.07
+                                                    C96.52,89.96,96.52,85.53,93.78,82.8z M44.17,59.18c0-7.73,6.27-14,14-14s14,6.27,14,14s-6.27,14-14,14S44.17,66.92,44.17,59.18z"/>
+                                </symbol>
+                            </svg>
+
+                            <i class='bx bx-search' >
+                                <svg class="icon">
+                                    <use xlink:href="#icon-search" href="#icon-search" />
+                                </svg>
+                            </i>
+                            <input type="text" placeholder="Поиск...">
+                            <span class="tooltip">Поиск</span>
+                        </li> -->
+
+                        {% if user.is_authenticated %}
+                            <li class="bx-logout">
+                                <svg style="display: none">
+                                    <symbol id="icon-logout" viewBox="0 0 128 128">
+                                        <path d="M75.95,63.14L55.39,42.02c-0.83-0.86-2.29-0.27-2.29,0.93V53c0,0.74-0.6,1.33-1.33,1.33H37.1
+                                            c-1.47,0-2.67,1.19-2.67,2.67v8v8c0,1.47,1.19,2.67,2.67,2.67h14.67c0.74,0,1.33,0.6,1.33,1.33v10.05c0,1.2,1.45,1.79,2.29,0.93
+                                            l20.57-21.12C76.96,65.82,76.96,64.18,75.95,63.14z"/>
+                                        <path d="M90.9,33h-7.33h-7.33c-1.47,0-2.67,1.19-2.67,2.67v4.67c0,1.47,1.19,2.67,2.67,2.67h6
+                                            c0.74,0,1.33,0.6,1.33,1.33V65v20.67c0,0.74-0.6,1.33-1.33,1.33h-6c-1.47,0-2.67,1.19-2.67,2.67v4.67c0,1.47,1.19,2.67,2.67,2.67
+                                            h7.33h7.33c1.47,0,2.67-1.19,2.67-2.67V87V65V43v-7.33C93.57,34.19,92.38,33,90.9,33z"/>
+                                    </symbol>
+                                </svg>
+
+                                <a href="{% url 'logout'%}?next=/login">
+                                    <i class='bx bx-user'>
+                                        <svg class="icon">
+                                            <use xlink:href="#icon-logout" href="#icon-logout" />
+                                        </svg>
+                                    </i>
+                                    <span class="links_name">Выход</span>
+                                </a>
+                                <span class="tooltip">Выход</span>
+                            </li>
+                        {% else %}
+                            <li><a href="{% url 'login'%}?next={{request.path}}">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+                {% endblock %}
+           
+                <script>
+                    let sidebar = document.querySelector(".sidebar");
+                    let closeBtn = document.querySelector("#btn");
+                    let searchBtn = document.querySelector(".bx-search");
+                    
+                    closeBtn.addEventListener("click", ()=>{
+                        sidebar.classList.toggle("open");
+                        menuBtnChange();//calling the function(optional)
+                    });
+                    
+                    searchBtn.addEventListener("click", ()=>{ // Sidebar open when you click on the search iocn
+                        sidebar.classList.toggle("open");
+                        menuBtnChange(); //calling the function(optional)
+                    });
+                    
+                    // following are the code to change sidebar button(optional)
+                    function menuBtnChange()
+                    {
+                        if(sidebar.classList.contains("open"))
+                        {
+                            closeBtn.classList.replace("bx-menu", "bx-menu-alt-right");//replacing the iocns class
+                        }
+                        else
+                        {
+                            closeBtn.classList.replace("bx-menu-alt-right","bx-menu");//replacing the iocns class
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+
+    </body>
+
+    <svg style="display: none">
+        <symbol id="icon-banana" viewBox="0 0 128 128">
+            <path d="M97.05,33.14c0,0-6.55-2.97-8.26-1.84c-2.75,1.84-3.85,23.7-18.36,39.46c-21.11,22.94-30.29,15.6-30.29,18.36
+                s-2.75,5.51,10.1,7.34c27.8,3.97,38.55-17.44,43.13-25.7c2.99-5.38,1.84-22.03,0.92-28.45C94.04,40.5,97.05,33.14,97.05,33.14z"/>
+            <path d="M64.93,72.61c4.59-1.84,16.52-22.94,15.6-25.7c-0.4-1.2-12.11,8.18-22.03,11.01
+                c-19.27,5.51-25.23-0.59-26.61,1.84c-3.67,6.42,4.47,7.47,6.42,9.18C45.66,75.36,62.23,73.68,64.93,72.61z"/>
+        </symbol>
+    </svg>
+
+    <svg style="display: none">
+        <symbol id="icon-rate" viewBox="0 0 128 128">
+            <path d="M94.34,52.47H66.71c-1.5,0-2.71-1.21-2.71-2.71V24.58c0-1.36-1.77-1.87-2.5-0.73L31.37,71.37
+            c-1.15,1.81,0.15,4.17,2.29,4.17h27.63c1.5,0,2.71,1.21,2.71,2.71v25.17c0,1.36,1.77,1.87,2.5,0.73l30.13-47.51
+            C97.78,54.83,96.48,52.47,94.34,52.47z"/>
+        </symbol>
+    </svg>
+
+    <svg style="display: none">
+        <symbol id="icon-repost" viewBox="0 0 128 128">
+            <path d="M97.65,58.1L77.92,38.51c-1.26-1.25-3.41-0.36-3.41,1.42V50.2
+            c-37.05,2.3-41.04,22.07-45.26,36.94c-0.62,2.2,2.44,4.09,3.52,2.08c2.69-5.01,21.14-23.47,41.73-18.34v11.06
+            c0,1.78,2.15,2.67,3.41,1.42l19.73-19.58C99.23,62.21,99.23,59.66,97.65,58.1z"/>
+        </symbol>
+    </svg>
+
+    
+</html>

@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/friend_button_style.css' %}">
+
+
+  <div class="friendpage">
+    <label class="friendpage_label">Подписки {{ current_user.profile.nickname }}</label>
+    <a href="/friends/">Друзья</a>
+    <a href="/friends/receiver">Подписчики</a>
+
+    <div class="friendpage_friends">
+      {% if friend_list_count != 0 %}
+
+        {% for x in friend_list %}
+          <div class="friend_unit">
+            <a href="/{{ x }}"><img src="../media/{{ x.profile.photo }}"/></a>
+            <a href="/{{ x }}">{{ x.profile.name }} {{ x.profile.surname }}</a>
+          </div>
+
+          {% if user != x %}
+            <input type="button" name = "cancel_req" class="friend_button" id="cancel_req_{{ x }}" value = "{{ x }}"/>
+            <label for="cancel_req_{{ x }}" class="friend_button">Отменить заявку</label>
+
+            <input type="button" name = "send_message" class="friend_button" id="send_message_{{ x }}" value = "{{ x }}"/>
+            <label for="send_message_{{ x }}" class="friend_button">Написать сообщение</label>
+          {% endif %}
+        {% endfor %}
+
+      {% else %}
+          <label>Здесь пока никого нет</label>
+      {% endif %}
+    </div>
+  </div>
+  
+  <script>
+    $(function(){
+      $('input[name="cancel_req"]').click(function(){
+      $.ajax({
+          type: "GET",
+          url: '/' + $(this).val() + '/cancel_req/',
+          });
+          window.location.reload();
+          return false;
+      });
+    });
+
+    $(function(){
+      $('input[name="send_message"]').click(function(){
+        window.location = '/' + $(this).val() + '/dialog/'
+      });
+    });
+  </script>
+
+{% endblock %}

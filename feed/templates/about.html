@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/about_style.css' %}">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас</title>
+</head>
+<body>
+    <section class = "HeadMenu">
+        <div>
+            <a href="/login">Вернуться на главную</a>
+        </div>
+	</section>
+
+
+	<section class = "Jungle">
+	
+		<div style = "background-color: #E6F0FF;"></div>
+        {% load static %}
+		<img src="{% static 'resources/about_images/4.png' %}" id = "bg" width=200px>
+		<img src="{% static 'resources/about_images/3.png' %}" id = "text">
+		<img src="{% static 'resources/about_images/2.png' %}" id = "glade">
+		<img src="{% static 'resources/about_images/1.png' %}" id = "bushes">
+
+	</section>
+
+    <section class = "Partition"></section>
+
+    <section class="AboutMe">
+        <div>
+            {% load static %}
+            <img src="{% static 'resources/about_images/5.png' %}" id = "about">
+        </div>       
+    </section>
+
+    <section class="Columns">
+        <div>
+            <label>Курсовая работа</label>
+            <label>Выполнили студенты группы АИБ-18 Рогачев С.С. и Казаковцев М.С.</label>
+        </div>
+    </section>
+
+    <script type="text/javascript">
+        let bg = document.getElementById("bg");
+        let text = document.getElementById("text");
+        let glade = document.getElementById("glade");
+        let bushes = document.getElementById("bushes");
+        let about = document.getElementById("about");
+        about.style.top = 0;
+
+        window.addEventListener('scroll', function()
+        {
+            var value = window.scrollY;
+            bg.style.top = value * 0.3 + 'px';
+            text.style.top = value * 0.75 + 'px';
+            glade.style.top = value * 0.1 + 'px';
+            console.log(about.style.top);
+            if(parseFloat(about.style.top) <= 80)
+            {
+                let sum = -800 + value * 0.9;
+                if (sum >= 80) about.style.top = 80 + 'px';
+                else about.style.top = -800 + value * 0.9 + 'px';
+                
+                
+            }
+        })
+    </script>
+</body>
+</html>
