@@ -1,4 +1,3 @@
-from msilib.schema import Dialog
 from django.contrib import admin
 from .models import Like, Profile, Note, Friend, FriendRequest, Message, Dialog
 
