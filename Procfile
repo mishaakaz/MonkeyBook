@@ -1,1 +1,1 @@
-web: gunicorn monkeybook.wsgi --log-file -
+web: gunicorn MonkeyBook.wsgi --log-file -
